@@ -43,10 +43,18 @@ def main():
     arguments = parser.parse_args()
 
     while True:
-        check_all_batteries()
+        ac = check_for_ac()
+        if not ac:
+            check_all_batteries()
         if not arguments.daemonize:
             break
         sleep(arguments.sleep_seconds)
+
+
+def check_for_ac() -> bool:
+    """Check whether AC is currently online."""
+    return bool(int(_get_file_contents(
+        os.path.join('/sys/class/power_supply/AC/online'))))
 
 
 def get_battery_level(battery_path: str) -> float:
