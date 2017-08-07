@@ -4,6 +4,10 @@ This is a simple battery warning script. It reads status files under /sys/class/
 
 The script is capable of monitoring multiple batteries.
 
+It prints a wall of text on your screen so that you can't possibly overlook the warning.
+
+![Screenshot](/screenshot.png)
+
 
 ## Configuration
 
